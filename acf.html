@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/acf_members.js"></script>
+        <script src="js/quiz.js"></script>
+        <script src="js/toggle.js"></script>
+        <link rel="stylesheet" href="css/acf.css">
+    </head>
+    <body>
+        <div class="grid-container">
+            <div id="toggle-sidebar" class="grid-item">
+                <h1>asian christian fellowship</h1>
+
+                <input type="checkbox">I am already in the dataset.<br>
+
+                <h2>enneagram</h2>
+                <button class="One enneagram-button" onclick="saveCategory('Enneagram', 'One')"">1</button>
+                <button class="Two enneagram-button" onclick="saveCategory('Enneagram', 'Two')">2</button>
+                <button class="Three enneagram-button" onclick="saveCategory('Enneagram', 'Three')">3</button>
+                <button class="Four enneagram-button" onclick="saveCategory('Enneagram', 'Four')">4</button>
+                <button class="Five enneagram-button" onclick="saveCategory('Enneagram', 'Five')">5</button>
+                <button class="Six enneagram-button" onclick="saveCategory('Enneagram', 'Six')">6</button>
+                <button class="Seven enneagram-button" onclick="saveCategory('Enneagram', 'Seven')">7</button>
+                <button class="Eight enneagram-button" onclick="saveCategory('Enneagram', 'Eight')">8</button>
+                <button class="Nine enneagram-button" onclick="saveCategory('Enneagram', 'Nine')">9</button>
+
+                <h2>gender</h2>
+                <button class = "gender" onclick="saveCategory('Gender', 'Male')">m</button>
+                <button class = "gender" onclick="saveCategory('Gender', 'Female')">f</button>
+
+                <h2>university</h2>
+                <button class = "uni" onclick="saveCategory('Uni', 'CMU')">cmu</button>
+                <button class = "uni" onclick="saveCategory('Uni', 'Pitt')">pitt</button>
+                <button class = "uni" onclick="saveCategory('Uni', 'Other')">other</button>
+
+                <h2>year</h2>
+                <button class = "year" onclick="saveCategory('Year', '1')">1</button>
+                <button class = "year" onclick="saveCategory('Year', '2')">2</button>
+                <button class = "year" onclick="saveCategory('Year', '3')">3</button>
+                <button class = "year" onclick="saveCategory('Year', '4')">4/5</button>
+                <button class = "year" onclick="saveCategory('Year', '5')">+</button>
+
+                <h2>myers-briggs</h2>
+                <button class = "mb1" onclick="saveCategory('MB1', 'I')">i</button>
+                <button class = "mb2" onclick="saveCategory('MB2', 'N')">n</button>
+                <button class = "mb3" onclick="saveCategory('MB3', 'T')">t</button>
+                <button class = "mb4" onclick="saveCategory('MB4', 'P')">p</button>
+                <br>
+                <button class = "mb1" onclick="saveCategory('MB1', 'E')">e</button>
+                <button class = "mb2" onclick="saveCategory('MB2', 'S')">s</button>
+                <button class = "mb3" onclick="saveCategory('MB3', 'F')">f</button>
+                <button class = "mb4" onclick="saveCategory('MB4', 'J')">j</button>
+
+                <h2>spiritual gifts</h2>
+                <button class = "sg" onclick="saveCategory('SG', 'Evangelism')">evangelism</button>
+                <button class = "sg" onclick="saveCategory('SG', 'Prophecy')">prophecy</button>
+                <button class = "sg" onclick="saveCategory('SG', 'Teaching')">teaching</button>
+                <br>
+                <button class = "sg" onclick="saveCategory('SG', 'Exhortation')">exhortation</button>
+                <button class = "sg" onclick="saveCategory('SG', 'Shepherding')">shepherding</button>
+                <button class = "sg" onclick="saveCategory('SG', 'Showing Mercy')">showing mercy</button>
+                <br>
+                <button class = "sg" onclick="saveCategory('SG', 'Serving')">serving</button>
+                <button class = "sg" onclick="saveCategory('SG', 'Giving')">giving</button>
+                <button class = "sg" onclick="saveCategory('SG', 'Administration')">administration</button>
+
+                <br><br>
+                <button class = "submit" onclick="savePerson()">SUBMIT</button>
+                <!-- <p id="demo"></p> -->
+            </div>
+
+            <div id=results class="grid-item"></div>
+
+        </div>
+
+    </body>
+</html>
