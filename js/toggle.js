@@ -30,7 +30,7 @@ var order_stack = [];
 // list of options
 var genders = ['Male', 'Female'];
 var unis = ['CMU', 'Pitt', 'Other'];
-var years = [1, 2, 3, 4, 5];
+var years = ['1', '2', '3', '4/5', '+'];
 var mbs = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 
             'INFJ', 'INFP', 'ENFJ', 'ENFP', 
             'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 
@@ -67,15 +67,25 @@ $( document ).ready(function() {
             $('button.uni').removeClass('selected');
             $(this).addClass('selected');
         }
-    }); 
+    });
 
-    $('button.mb1').on('click', function(){
+    $('button.enneagram-button').on('click', function(){
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
         } else {
-            $('button.mb1').removeClass('selected');
+            $('button.enneagram-button').removeClass('selected');
             $(this).addClass('selected');
         }
+    });
+
+    
+    $('button.mb1').on('click', function(){
+    if ($(this).hasClass('selected')) {
+        $(this).removeClass('selected');
+    } else {
+        $('button.mb1').removeClass('selected');
+        $(this).addClass('selected');
+    }
     });  
 
     $('button.mb2').on('click', function(){
@@ -103,24 +113,91 @@ $( document ).ready(function() {
             $('button.mb4').removeClass('selected');
             $(this).addClass('selected');
         }
-    });       
+    });
+
+    var last_sg_buttons = [];
 
     $('button.sg').on('click', function(){
+        if (!quiz && last_sg_buttons.length == 3) {
+            last_sg_buttons = [];
+        }
         if ($(this).hasClass('selected')) {
+            let button = this;
+            last_sg_buttons = last_sg_buttons.filter(function(value, index, arr){
+                return value != button;
+            });
             $(this).removeClass('selected');
         } else {
+            if (last_sg_buttons.length == 3) {
+                let button = last_sg_buttons.pop();
+                $(button).removeClass('selected');
+            }
             $(this).addClass('selected');
+            last_sg_buttons.push(this);
         }
-    });          
+    });        
 
 });
 
 
-function allMembers(data) {
-    dataset = order(data);
-    var result_text = "";
-    result_text += addDots("All", "");
-    document.getElementById("results").innerHTML = result_text;
+function allMembers() {
+    $(".dot-grid-container").remove();
+    var wholeWidth = $(".cluster").width();
+    var wholeHeight = $(".cluster").height();
+    var coordinates = [[wholeWidth/2, wholeHeight/2]];
+    var x;
+    var y;
+
+    for (var i = 0; i < dataset.length; i++) {
+        var member = dataset[i];
+          var spacing = 5;
+          var eg = member["Enneagram"];
+          // var dot_text = '<div class="circle ' + eg + '"' + ' id="' + member.id + 100'"></div>';
+
+          
+
+          if (member.id == dataset.length + 1) {
+            x = Math.floor(wholeWidth / 2);
+            y = Math.floor(wholeHeight / 2);
+          } else {
+            var coordinate = randomCoordinate(eg, member.id);
+            x = coordinate[0];
+            y = coordinate[1];
+            var app = appropriateSpacing(x, y, coordinates);
+
+            while (app[0] != "ok") {
+              if (app[0] == "left") {
+                x -= spacing;
+              } else if (app[0] == "right") {
+                x += spacing;
+              }
+              if (app[1] == "up") {
+                y -= spacing;
+              } else if (app[1] == "down") {
+                y += spacing;
+              }
+
+              app = appropriateSpacing(x, y, coordinates);
+              spacing += 0.5;
+            } 
+
+            coordinates.push([x, y]);
+          }
+
+          var resultsWidth = 0;
+          // var resultsWidth = $("#results").width() / 3;
+            // var windowRem = $(window).width() / parseFloat($("body").css("font-size"));
+            // var resultsRatio = resultsWidth / $(window).width();
+            // var resultsRem = resultsRatio * windowRem;
+            // var width = resultsRem / 2 - 4;
+            // var width = resultsRatio / 2;
+
+          $("#" + member.id).animate({"left": x + resultsWidth}, "slow").animate({"top": y}, "slow").animate({"opacity": 1 }, "slow");
+
+          // $(dot_text).hide().appendTo(".cluster").css('left', x).css('top', y);
+          // $("#" + member.id).delay(4500).fadeIn("slow");
+
+    }               
 }
 
 function removeLastInstance(order_stack, array){
@@ -138,7 +215,6 @@ function saveCategory(category, detail) {
         saveCategoryPost(category, detail);
     } else if (quiz) {
         saveCategoryPre(category, detail);
-        console.log(personal_details);
     }
 }
 
@@ -197,23 +273,20 @@ function saveCategoryPost(category, detail) {
 function changeDots(category) {
     var option = category_details[category];
     var spotlight_dots = document.getElementsByClassName("spotlight");
-    
-    if (spotlight_dots.length == 0) { // is this needed
-        
-    } else {
-        // get the ids of spotlight dots
-        var dots = [];
-        for (var i = 0; i < spotlight_dots.length; i++) { 
-            var id = $(spotlight_dots[i]).attr('id');
-            dots.push(id);
-        }
+    // get the ids of spotlight dots
+    // var dots = [];
+    // for (var i = 0; i < spotlight_dots.length; i++) { 
+    //     var id = $(spotlight_dots[i]).attr('id');
+    //     dots.push(id);
+    // }
 
-        // matching up member ids to spotlight ids
-        for (var i = 0; i < dataset.length; i++) {
-            var member = dataset[i];
-            if (!fulfillAllReqs(member)) {
-                $('#' + member["id"]).removeClass('spotlight');
-            }
+    // console.log(dots);
+
+    // matching up member ids to spotlight ids
+    for (var i = 0; i < dataset.length; i++) {
+        var member = dataset[i];
+        if (!fulfillAllReqs(member)) {
+            $("#" + member.id).animate({"opacity": 0.2}, "slow");
         }
     }
 }
@@ -235,7 +308,7 @@ function selectOptions(category) {
     return options;
 }
 
-function listResults(category) { // if MB1
+function listResults(category) {
     var cat = category;
     if (category.slice(0, 2) == "MB") {
         cat = category.slice(0, 2);
@@ -243,15 +316,85 @@ function listResults(category) { // if MB1
     var options = selectOptions(cat);
     var result_text = "";
     for (var i = 0; i < options.length; i++) {
-      let option = options[i];
+      var option = options[i];
       if (typeof option == "string") {
         option = option.toLowerCase()
       }
-      result_text += "<div class='section'><h3>" + option + "</h3>";
-      result_text += addDots(cat, options[i]); // ?? originally category
-      result_text += "</div>";
+
+      if (cat == "MB") {
+        result_text += "<div class='mb-dot-grid'>";
+        result_text += "<div class='grid-item'><h3>" + option + "</h3></div>";
+        result_text += "<div class='grid-item'>";
+        result_text += addDots(cat, options[i]); // ?? originally category
+        result_text += "</div></div>";
+      } else {
+        result_text += "<div class='dot-grid-container'>";
+        result_text += "<div class='grid-item'><h3>" + option + "</h3></div>";
+        result_text += "<div class='grid-item'>";
+        result_text += addDots(cat, options[i]); // ?? originally category
+        result_text += "</div></div>";
+      }
     }
-    document.getElementById("results").innerHTML = result_text;
+
+    // PREP
+    // YOU dot prep
+    $('.you').css("margin-top", "-0.375rem");
+    $('.you').css("margin-left", "-0.375rem");
+    $('.you').removeClass('center'); // tryna adjust for the not exact placement
+
+    // reset cluster stuff
+    $('.cluster').prepend( $('.you') ); // making multiple copies rn
+    $(".dot-grid-container").remove();
+    $(".mb-dot-grid").remove();
+
+    if (cat == "MB") { // so many conditionals rip
+        result_text = "<div class='mb-dot-grid-container'>" + result_text + "</div>";
+    }
+
+    result_text = "<div class='center'>" + result_text + "</div>";
+    $(".cluster").prepend(result_text); // making multiple copies rn
+    // $('.center').remove(); // difficult removing this rn
+
+
+    if (cat == "MB") {
+        // somehow it works when i use dot-grid now
+        var topOffset = $('.mb-dot-grid-container').offset().top - $('.cluster').offset().top;
+        var leftOffset = $('.mb-dot-grid-container').offset().left - $('.cluster').offset().left;
+    } else {
+        // somehow it works when i use dot-grid now
+        var topOffset = $('.dot-grid-container').offset().top - $('.cluster').offset().top;
+        var leftOffset = $('.dot-grid-container').offset().left - $('.cluster').offset().left;
+    }
+    
+
+    // ANIMATION - still glitchy
+    var time = 0;
+    // moving dot
+    for (var i = 0; i < dataset.length + 1; i++) {
+        if (i != dataset.length) {
+            var member = dataset[i];
+            var number = member.id + 100; // the placeholder circle
+            var position = $("#" + number).position();
+            if (position.left != $("#" + member.id).position().left) { // speed up opacity animation
+                time = 1500;
+            } // JANK AF POSITIONING
+            $("#" + member.id).animate({"left": position.left + leftOffset }, "slow").animate({"top": position.top + topOffset}, "slow"); // the moving circle
+        }
+    }
+
+    // animating opacity
+    setTimeout(function(){
+        for (var i = 0; i < dataset.length + 1; i++) {
+            if (i != dataset.length) {
+                var member = dataset[i];
+                if (!fulfillAllReqs(member)) {
+                    $("#" + member.id).animate({"opacity": 0.1}, "slow"); // the moving circle
+                } else {
+                    $("#" + member.id).animate({"opacity": 1}, "slow");
+                }
+            }
+        }
+    }, time);
 }
 
 function addDots(category, option) {
@@ -260,18 +403,12 @@ function addDots(category, option) {
         var new_text = "";
         var member = dataset[i];
         if (fulfillReq(member, category, option)) {
-            if (fulfillAllReqs(member)) {
-                new_text += " spotlight";
-            }
-
-            if (member.id == dataset.length) {
+            if (member.id > dataset.length) {
                 new_text += " you";
             }
-            console.log(dataset.length);
-            console.log(member.id);
-            dot_text += '<div class="circle ' + member["Enneagram"] + new_text + '"' + ' id="' + member.id + '"></div>';
+            var number = member.id + 100;
+            dot_text += '<div class="circle ' + member["Enneagram"] + new_text + '"' + ' id="' + number + '"></div>';
         }
-        
     }
     return dot_text;
 }
@@ -279,8 +416,6 @@ function addDots(category, option) {
 function fulfillAllReqs(member) {
     for (var i = 0; i < order_stack.length; i++) {
         let cat = order_stack[i];
-        console.log(cat);
-        console.log(category_details[cat]);
         if (!fulfillReq(member, cat, category_details[cat])) {
             return false;
         }

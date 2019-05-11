@@ -3,18 +3,18 @@ var text =
  {
    "id": 1,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "INFJ",
    "Enneagram": "One",
-   "SG1": "Serving",
+   "SGs": "Serving",
    "SG2": "Shepherding",
    "SG3": "Showing Mercy"
  },
  {
    "id": 2,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "ISFJ",
    "Enneagram": "One",
@@ -25,7 +25,7 @@ var text =
  {
    "id": 3,
    "Gender": "Male",
-   "Year": 5,
+   "Year": "+",
    "Uni": "CMU",
    "MB": "ISFJ",
    "Enneagram": "One",
@@ -36,7 +36,7 @@ var text =
   {
    "id": 4,
    "Gender": "Male",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "CMU",
    "MB": "ESFP",
    "Enneagram": "One",
@@ -47,7 +47,7 @@ var text =
  {
    "id": 5,
    "Gender": "Male",
-   "Year": 1,
+   "Year": "1",
    "Uni": "Pitt",
    "MB": "ENFP",
    "Enneagram": "Two",
@@ -58,7 +58,7 @@ var text =
  {
    "id": 6,
    "Gender": "Female",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "Pitt",
    "MB": "ESFJ",
    "Enneagram": "Two",
@@ -69,7 +69,7 @@ var text =
  {
    "id": 7,
    "Gender": "Female",
-   "Year": 2,
+   "Year": "2",
    "Uni": "CMU",
    "MB": "INFJ",
    "Enneagram": "Two",
@@ -80,7 +80,7 @@ var text =
  {
    "id": 8,
    "Gender": "Male",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "INFJ",
    "Enneagram": "Two",
@@ -91,7 +91,7 @@ var text =
  {
    "id": 9,
    "Gender": "Male",
-   "Year": 2,
+   "Year": "2",
    "Uni": "CMU",
    "MB": "INFJ",
    "Enneagram": "Two",
@@ -102,7 +102,7 @@ var text =
  {
    "id": 10,
    "Gender": "Male",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "INFP",
    "Enneagram": "Two",
@@ -113,7 +113,7 @@ var text =
  {
    "id": 11,
    "Gender": "Female",
-   "Year": 2,
+   "Year": "2",
    "Uni": "CMU",
    "MB": "ISFJ",
    "Enneagram": "Two",
@@ -124,7 +124,7 @@ var text =
  {
    "id": 12,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "ENTJ",
    "Enneagram": "Three",
@@ -135,7 +135,7 @@ var text =
  {
    "id": 13,
    "Gender": "Male",
-   "Year": 3,
+   "Year": "3",
    "Uni": "CMU",
    "MB": "ENTJ",
    "Enneagram": "Three",
@@ -146,7 +146,7 @@ var text =
  {
    "id": 14,
    "Gender": "Female",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "CMU",
    "MB": "INFJ",
    "Enneagram": "Three",
@@ -157,7 +157,7 @@ var text =
  {
    "id": 15,
    "Gender": "Female",
-   "Year": 3,
+   "Year": "3",
    "Uni": "CMU",
    "MB": "ISFJ",
    "Enneagram": "Three",
@@ -168,7 +168,7 @@ var text =
  {
    "id": 16,
    "Gender": "Female",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "Pitt",
    "MB": "ISFP",
    "Enneagram": "Three",
@@ -179,7 +179,7 @@ var text =
  {
    "id": 17,
    "Gender": "Female",
-   "Year": 5,
+   "Year": "+",
    "Uni": "CMU",
    "MB": "ENFP",
    "Enneagram": "Four",
@@ -190,7 +190,7 @@ var text =
  {
    "id": 18,
    "Gender": "Female",
-   "Year": 5,
+   "Year": "+",
    "Uni": "CMU",
    "MB": "INFJ",
    "Enneagram": "Four",
@@ -201,7 +201,7 @@ var text =
  {
    "id": 19,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "INFP",
    "Enneagram": "Four",
@@ -212,7 +212,7 @@ var text =
  {
    "id": 20,
    "Gender": "Male",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "CMU",
    "MB": "INFP",
    "Enneagram": "Four",
@@ -223,7 +223,7 @@ var text =
  {
    "id": 21,
    "Gender": "Female",
-   "Year": 2,
+   "Year": "2",
    "Uni": "CMU",
    "MB": "INTP",
    "Enneagram": "Five",
@@ -234,7 +234,7 @@ var text =
  {
    "id": 22,
    "Gender": "Male",
-   "Year": 2,
+   "Year": "2",
    "Uni": "Other",
    "MB": "INTP",
    "Enneagram": "Five",
@@ -245,7 +245,7 @@ var text =
  {
    "id": 23,
    "Gender": "Male",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "CMU",
    "MB": "ISTJ",
    "Enneagram": "Five",
@@ -256,7 +256,7 @@ var text =
  {
    "id": 24,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "ESFJ",
    "Enneagram": "Six",
@@ -267,7 +267,7 @@ var text =
  {
    "id": 25,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "INTP",
    "Enneagram": "Six",
@@ -278,7 +278,7 @@ var text =
  {
    "id": 26,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "ISFP",
    "Enneagram": "Six",
@@ -289,7 +289,7 @@ var text =
  {
    "id": 27,
    "Gender": "Female",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "Pitt",
    "MB": "ISFP",
    "Enneagram": "Six",
@@ -300,7 +300,7 @@ var text =
  {
    "id": 28,
    "Gender": "Female",
-   "Year": 3,
+   "Year": "3",
    "Uni": "CMU",
    "MB": "ISTJ",
    "Enneagram": "Six",
@@ -311,7 +311,7 @@ var text =
  {
    "id": 29,
    "Gender": "Female",
-   "Year": 2,
+   "Year": "2",
    "Uni": "CMU",
    "MB": "ESFP",
    "Enneagram": "Seven",
@@ -322,7 +322,7 @@ var text =
  {
    "id": 30,
    "Gender": "Male",
-   "Year": 3,
+   "Year": "3",
    "Uni": "CMU",
    "MB": "ESFP",
    "Enneagram": "Seven",
@@ -333,7 +333,7 @@ var text =
  {
    "id": 31,
    "Gender": "Female",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "CMU",
    "MB": "ENFP",
    "Enneagram": "Eight",
@@ -344,7 +344,7 @@ var text =
  {
    "id": 32,
    "Gender": "Male",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "INTP",
    "Enneagram": "Eight",
@@ -355,7 +355,7 @@ var text =
  {
    "id": 33,
    "Gender": "Male",
-   "Year": 3,
+   "Year": "3",
    "Uni": "Pitt",
    "MB": "ENFJ",
    "Enneagram": "Nine",
@@ -366,7 +366,7 @@ var text =
  {
    "id": 34,
    "Gender": "Female",
-   "Year": 5,
+   "Year": "+",
    "Uni": "CMU",
    "MB": "ESFJ",
    "Enneagram": "Nine",
@@ -377,7 +377,7 @@ var text =
  {
    "id": 35,
    "Gender": "Male",
-   "Year": 5,
+   "Year": "+",
    "Uni": "Pitt",
    "MB": "INFJ",
    "Enneagram": "Nine",
@@ -388,7 +388,7 @@ var text =
  {
    "id": 36,
    "Gender": "Male",
-   "Year": 2,
+   "Year": "2",
    "Uni": "CMU",
    "MB": "INFP",
    "Enneagram": "Nine",
@@ -399,7 +399,7 @@ var text =
  {
    "id": 37,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "Pitt",
    "MB": "ISFJ",
    "Enneagram": "Nine",
@@ -410,7 +410,7 @@ var text =
  {
    "id": 38,
    "Gender": "Male",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "CMU",
    "MB": "ISFJ",
    "Enneagram": "Nine",
@@ -421,7 +421,7 @@ var text =
  {
    "id": 39,
    "Gender": "Male",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "ISFP",
    "Enneagram": "Nine",
@@ -432,7 +432,7 @@ var text =
  {
    "id": 40,
    "Gender": "Female",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "Pitt",
    "MB": "ISTJ",
    "Enneagram": "Nine",
@@ -443,7 +443,7 @@ var text =
  {
    "id": 41,
    "Gender": "Male",
-   "Year": 4,
+   "Year": "4/5",
    "Uni": "Pitt",
    "MB": "ISTJ",
    "Enneagram": "Nine",
@@ -454,7 +454,7 @@ var text =
  {
    "id": 42,
    "Gender": "Female",
-   "Year": 1,
+   "Year": "1",
    "Uni": "CMU",
    "MB": "ENFP",
    "Enneagram": "Three",
